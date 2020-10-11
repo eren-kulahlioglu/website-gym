@@ -122,6 +122,7 @@ $hakkimizdacek = $hakkimizda-> fetch(PDO::FETCH_ASSOC);
                     <input name="pt_name1" type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $hakkimizdacek['pt_name1']  ?>" placeholder="Lütfen PT ismi Giriniz">
                   </div>
 
+                
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">PT-2 İSİM</label>

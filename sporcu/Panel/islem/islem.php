@@ -152,14 +152,17 @@ if(isset($_POST['iletisimkaydet'])) {
       } 
     
 
+    // Hakkımızda
+
+
     // Foto İçin
     
     if(isset($_POST['sliderkaydet'])) {
         
 
     $uploads_dir = '../resimler';
-    @$tmp_name = $_FILES['foto'] ["tmp_name"];
-    @$name = $_FILES['foto'] ["name"];
+    @$tmp_name = $_FILES['resim'] ["tmp_name"];
+    @$name = $_FILES['resim'] ["name"];
 
     $sayi1=rand(20000,30000);
     $sayi2=rand(20000,30000);
@@ -173,41 +176,178 @@ if(isset($_POST['iletisimkaydet'])) {
 
 
 
-    $kaydet=$baglanti->prepare("INSERT INTO slider1 SET
+    $kaydet=$baglanti->prepare("INSERT INTO slider SET
     
-    kucuk_baslik=:kucuk_baslik,
-    baslik1=:baslik1,
-    baslik2=:baslik2,
-    baslik3=:baslik3,
-    link=:link,
-    buton=:buton,
+    baslik=:baslik,
     sira=:sira,
-    foto=:foto");
+    baslik2=:baslik2,
+    link=:link,
+    button=:button,
+    resim=:resim");
 
 
 
     $insert=$kaydet -> execute(array(
 
-        'kucuk_baslik' =>$_POST['kucuk_baslik'],
-        'baslik1' =>$_POST['baslik1'],
-        'baslik2' =>$_POST['baslik2'],
-        'baslik3' =>$_POST['baslik3'],
-        'link' =>$_POST['link'],
-        'buton' =>$_POST['buton'],
+        'baslik' =>$_POST['baslik'],
         'sira' =>$_POST['sira'],
-        'foto' =>$resimyolu
+        'baslik2' =>$_POST['baslik2'],
+        'link' =>$_POST['link'],
+        'button' =>$_POST['button'],
+        'resim' =>$resimyolu
         
-       
-    ));
+        ));
   
 
 if ($insert) {
-    Header("Location:../slider.php?durum=ok");
+    Header("Location:../slider.php?durum=okey");
 }else {
     Header("Location:../slider.php?durum=no");
 }
 
 } 
+
+// slider-duzenle
+
+
+if(isset($_POST['sliderduzenle'])) {
+
+
+    if($_FILES['resim'] ["size"]>0) {
+
+
+
+    $uploads_dir = '../resimler';
+    @$tmp_name = $_FILES['resim'] ["tmp_name"];
+    @$name = $_FILES['resim'] ["name"];
+
+    $sayi1=rand(20000,30000);
+    $sayi2=rand(20000,30000);
+    $sayi3=rand(20000,30000);
+    $sayilar=$sayi1.$sayi2.$sayi3;
+    $resimyolu=$sayilar.$name;
+    @move_uploaded_file($tmp_name, "$uploads_dir/$sayilar$name");
+    
+
+
+    $kaydet=$baglanti->prepare("UPDATE slider SET
+    
+    baslik=:baslik,
+    sira=:sira,
+    baslik2=:baslik2,
+    link=:link,
+    button=:button,
+    resim=:resim
+    
+    WHERE id={$_POST['id']}
+    ");
+
+
+
+    $insert=$kaydet -> execute(array(
+
+        'baslik' =>$_POST['baslik'],
+        'sira' =>$_POST['sira'],
+        'baslik2' =>$_POST['baslik2'],
+        'link' =>$_POST['link'],
+        'button' =>$_POST['button'],
+        'resim' =>$resimyolu
+        
+        ));
+  
+
+if ($insert) {
+    Header("Location:../slider.php?durum=okey");
+}else {
+    Header("Location:../slider.php?durum=no");
+}
+
+} 
+    else {
+
+    $duzenle=$baglanti->prepare("UPDATE slider SET
+    
+    baslik=:baslik,
+    sira=:sira,
+    baslik2=:baslik2,
+    link=:link,
+    button=:button
+    
+    WHERE id={$_POST['id']}
+    ");
+
+
+
+    $insert=$duzenle -> execute(array(
+
+        'baslik' =>$_POST['baslik'],
+        'sira' =>$_POST['sira'],
+        'baslik2' =>$_POST['baslik2'],
+        'link' =>$_POST['link'],
+        'button' =>$_POST['button']
+    
+        
+        ));
+
+
+if ($insert) {
+    Header("Location:../slider.php?durum=okey");
+}else {
+    Header("Location:../slider.php?durum=no");
+}
+
+}
+
+// slider-duzenle
+
+}
+
+//SİL
+
+if (isset($_POST['slidersil'])) {
+
+    $sil=$_POST['resim'];
+    unlink("../resimler/$sil");
+
+
+    
+    $sil=$baglanti->prepare("DELETE from slider where id=:id");
+    
+    $sil->execute(array(
+        'id'=>$_POST['id']
+    ));  
+if ($sil) {
+    Header("Location:../slider.php?durum=ok");
+}
+else{
+    Header("Location:../slider.php?durum=no");
+}
+
+}
+
+
+//Düzenle'den Sil
+
+if (isset($_POST['resimsil'])) {
+
+    $sil=$_POST['resim'];
+    unlink("../resimler/$sil");
+
+
+    
+    $sil=$baglanti->prepare("DELETE from slider where resim=:resim");
+    
+    $sil->execute(array(
+        'resim' =>$resimyolu
+    ));  
+if ($sil) {
+    Header("Location:../sliderduzenle.php?durum=ok");
+}
+else{
+    Header("Location:../sliderduzenle.php?durum=no");
+}
+
+}
 
 
 
