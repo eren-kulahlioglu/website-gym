@@ -32,8 +32,8 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
 
                 <div class="col-lg-3">
                     <div class="logo">
-                        <a href="./index.php">
-                            <img style="margin-top:5px ;height:70px ; weight:20px" src="<?php echo $ayarcek['ayar_logo']?>" alt="">
+                        <a href="index.php">
+                            <img style="margin-top:5px ;height:70px ; weight:20px" src="Panel/resimler/logo/<?php echo $ayarcek['ayar_logo']?>" alt="">
                         </a>
                     </div>
                 </div>

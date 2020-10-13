@@ -54,6 +54,17 @@
             </a>
           </li>
 
+
+          <li class="nav-item">
+            <a href="iletisimgelen.php" class="nav-link">
+            <i class="far fa-envelope"></i>
+              <p style="color:white;">
+                İletişim
+                <span class="right badge badge-primary">Yeni</span>
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
             <i style="color:white;"class="fas fa-blog"></i>

@@ -351,4 +351,91 @@ else{
 
 
 
+
+//LOGO
+
+
+if(isset($_POST['logokaydet'])) {
+        
+
+    $uploads_dir = '../resimler/logo';
+    @$tmp_name = $_FILES['resim'] ["tmp_name"];
+    @$name = $_FILES['resim'] ["name"];
+
+    $sayi1=rand(20000,30000);
+    $sayi2=rand(20000,30000);
+    $sayi3=rand(20000,30000);
+    $sayilar=$sayi1.$sayi2.$sayi3;
+    $resimyolu=$sayilar.$name;
+    @move_uploaded_file($tmp_name, "$uploads_dir/$sayilar$name");
+    
+
+    
+
+
+
+    $kaydet=$baglanti->prepare("UPDATE ayarlar SET
+    
+    
+    ayar_logo=:ayar_logo");
+
+    $update=$kaydet -> execute(array(
+
+    'ayar_logo' =>$resimyolu
+        
+     ));
+  
+
+if ($update) {
+    Header("Location:../ayarlar.php?durum=okey");
+}else {
+    Header("Location:../ayarlar.php?durum=no");
+}
+
+} 
+
+
+// Mesaj İşlemi
+
+if(isset($_POST['mesajkaydet'])) {
+   $kaydet=$baglanti->prepare("INSERT INTO iletisim SET
+   baslik=:baslik,
+   mesaj=:mesaj,
+   mail=:mail,
+   telefon=:telefon
+   ") ;
+
+   $insert=$kaydet->execute(array(
+       'baslik'=>$_POST['baslik'],
+       'mesaj'=>$_POST['mesaj'],
+       'mail'=>$_POST['mail'],
+       'telefon'=>$_POST['telefon']
+       
+
+   ));
+
+
+   if ($insert) {
+    Header("Location:../../iletisim.php?durum=okey");
+}else {
+    Header("Location:../../iletisim.php?durum=no");
+}
+}
+
+if(isset($_POST['iletisimgelensil'])) {
+ 
+    $sil=$baglanti->prepare("DELETE from iletisim where id=:id");
+    
+    $sil->execute(array(
+        'id'=>$_POST['id']
+    ));  
+if ($sil) {
+    Header("Location:../iletisimgelen.php?durum=ok");
+}
+else{
+    Header("Location:../iletisimgelen.php?durum=no");
+}
+
+}
+
 ?>

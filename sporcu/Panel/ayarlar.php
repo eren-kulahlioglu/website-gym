@@ -51,11 +51,32 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
             ?>
 <!-- PANEL KULLANICI ICIN UYARI -->
 
-              <form action="islem/islem.php" method="POST" role="form">             
+              <form action="islem/islem.php" enctype="multipart/form-data" method="POST" role="form">             
                 
               
               
                 <div class="card-body">
+
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Varolan Resim</label> <p>
+                    <img style="width:80px;" src="resimler/logo/<?php echo $ayarcek ['ayar_logo']?>">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Değiştir/Yükle</label>
+                    <input name = "resim" type="file" class="form-control" id="exampleInputEmail1" >
+                  </div>
+
+                <button style="float:right;"class="btn btn-success" name="logokaydet">Kaydet</button>
+
+         </form>
+
+        <br>
+        <br>
+
+
+                <form action="islem/islem.php" method="POST" role="form">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Site Başlığı</label>
                     <input name = "ayar_title" type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $ayarcek['ayar_title']  ?>" placeholder="Lütfen Sitenizin Başlığınızı Giriniz" >

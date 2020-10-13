@@ -3,7 +3,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-        <h1 style=" color: #4894FF; font-family: 'Raleway',sans-serif; font-size: 18px; font-weight: 500; line-height: 32px; margin: 0 0 24px;"  
+        <h1 style=" color: #0A69EE; font-family: 'Raleway',sans-serif; font-size: 18px; font-weight: 500; line-height: 32px; margin: 0 0 24px; "  
         class="m-0 ">-</h1>
           </div>
           
@@ -15,8 +15,9 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3  style=" color: #4894FF; font-family: 'Raleway',sans-serif; font-size: 18px; font-weight: 500; line-height: 32px; margin: 0 0 24px;" 
-                class="card-title">Slider Düzenleme İşlemleri</h3>
+                <h3 style=" color: #4894FF; font-family: 'Raleway',sans-serif; font-size: 18px; font-weight: 500; line-height: 32px; margin: 0 0 24px; "  
+        class="m-0 " 
+                class="card-title">İletişim Mesajları</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -33,23 +34,22 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>resim</th>
-                      <th>başlık</th>
-                      <th>başlık 2</th>
-                      <th>button adı</th>
-                      <th>sıra</th>
+                      <th>Başlık</th>
+                      <th>Telefon</th>
+                      <th>Mesaj</th>
+                      <th>Mail Adresi</th>
                       <th></th>
-                      <th style="float:right;"><a href="sliderekle.php"><button style="width:147px;" class="btn btn-primary">Slider Ekle</button></a></th>
-                    </tr>
+                      
+                  </tr>
                   </thead>
                   <tbody>
                     
                   <?php  
-$slider=$baglanti->prepare("SELECT * from slider");
+$iletisim=$baglanti->prepare("SELECT * from iletisim order by id DESC");
 
-$slider->execute();  
+$iletisim->execute();  
 
-while ($slidercek = $slider-> fetch(PDO::FETCH_ASSOC)) {
+while ($iletisimcek = $iletisim-> fetch(PDO::FETCH_ASSOC)) {
 
 
 
@@ -60,22 +60,21 @@ while ($slidercek = $slider-> fetch(PDO::FETCH_ASSOC)) {
                 
                  
                     <tr>
-                      <td> <img style="width: 90px; height: 90px"src="resimler/<?php echo $slidercek['resim']?>"></td>
-                      <td><?php echo $slidercek['baslik']?></td>
-                      <td><?php echo $slidercek['baslik2']?></td>
-                      <td><?php echo $slidercek['button']?></td>
-                      <td><?php echo $slidercek['sira']?></td>
+                      
+                      <td><?php echo $iletisimcek['baslik']?></td>
+                      <td><?php echo $iletisimcek['telefon']?></td>
+                      <td><?php echo $iletisimcek['mesaj']?></td>
+                      <td><?php echo $iletisimcek['mail']?></td>
                       <td></td>
                           <td style="float:right">
      <form action="islem/islem.php"  method="POST" >
-    <input type="hidden" name="id" value="<?php echo $slidercek['id']?>">
-    <input type="hidden" name="resim" value="<?php echo $slidercek['resim']?>">
-                      <button name="slidersil" class= "btn btn-danger">Sil</button>
+    <input type="hidden" name="id" value="<?php echo $iletisimcek['id']?>">
+     <button name="iletisimgelensil" class= "btn btn-danger">Sil</button>
 
-      </form> </td>
+      </form>
+                         </td>
 
-                      <td style="float:right;"><a href="sliderduzenle.php?id=<?php echo $slidercek['id']?>"><button 
-                      class= "btn btn-success">Düzenle</button></a></td>
+                      
                       
                     </tr>
 

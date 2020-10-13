@@ -5,7 +5,7 @@
                 <div class="col-lg-4">
                     <div class="fs-about">
                         <div class="fa-logo">
-                            <a href="#"><img style="height:100px; weight:40px;"src="<?php echo $ayarcek['ayar_logo']?>" alt=""></a>
+                            <a href="#"><img style="height:100px; weight:40px;"src="Panel/resimler/logo/<?php echo $ayarcek['ayar_logo']?>" alt=""></a>
                         </div>
                         <p>GYM LEGEND</p>
                         <div class="fa-social">

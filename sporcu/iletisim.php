@@ -114,6 +114,41 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
     </section>
     <!-- Breadcrumb Section End -->
 
+
+   
+    
+
+  
+    <head>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"> </script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"> </script>
+
+    </head>
+
+    <?php  
+    
+    if(@$_GET['durum']=="okey"){ ?>
+    <div class="container">
+    <div class="alert alert-success" role="alert">
+      <h3 style="text-align:center;">Mesajınız iletilmiştir.</h3>
+    </div>
+    </div>
+     
+     
+     <?php }elseif(@$_GET['durum']=="no"){?> 
+
+     
+
+    <div class="container">
+    <div class="alert alert-danger" role="alert">
+      <h3 style="text-align:center;">Mesajınız iletilirken hata oluştu.</h3>
+    </div>
+    </div>
+
+<?php } ?>
+
     <!-- Contact Section Begin -->
     <section class="contact-section spad">
         <div class="container">
@@ -143,12 +178,12 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
                 </div>
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="#">
-                            <input type="text" placeholder="İsim">
-                            <input type="text" placeholder="Email">
-                            <input type="text" placeholder="Telefon">
-                            <textarea placeholder="Mesajınız"></textarea>
-                            <button type="submit">Gönder</button>
+                        <form action="Panel/islem/islem.php" method="post" >
+                            <input type="text" placeholder="Ad & Soyad" name="baslik" id="name">
+                            <input type="text" placeholder="Email" name="mail" id="email">
+                            <input type="text" placeholder="Telefon" name="telefon">
+                            <textarea placeholder="Mesajınız" name="mesaj" id="message"></textarea>
+                            <button name="mesajkaydet" type="submit">Gönder</button>
                         </form>
                     </div>
                 </div>
