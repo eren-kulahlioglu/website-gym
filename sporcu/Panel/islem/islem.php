@@ -438,4 +438,166 @@ else{
 
 }
 
+
+//RESİMLER
+
+
+
+if(isset($_POST['resimkaydet'])) {
+  
+    
+    $uploads_dir = '../resimler/galeri';
+    @$tmp_name = $_FILES['resim'] ["tmp_name"];
+    @$name = $_FILES['resim'] ["name"];
+
+    $sayi1=rand(20000,30000);
+    $sayi2=rand(20000,30000);
+    $sayi3=rand(20000,30000);
+    $sayilar=$sayi1.$sayi2.$sayi3;
+    $resimyolu=$sayilar.$name;
+    @move_uploaded_file($tmp_name, "$uploads_dir/$sayilar$name");
+    
+
+    
+
+    $kaydet=$baglanti->prepare("INSERT INTO resimler SET
+    
+    baslik=:baslik,
+    sira=:sira,
+    resim=:resim");
+
+     $insert=$kaydet -> execute(array(
+
+        'baslik' =>$_POST['baslik'],
+        'sira' =>$_POST['sira'],
+        'resim' =>$resimyolu
+        
+        ));
+  
+
+if ($insert) {
+    Header("Location:../resimler.php?durum=okey");
+}else {
+    Header("Location:../resimler.php?durum=no");
+}
+
+} 
+
+
+
+
+//Resimler Düzenle
+
+
+if(isset($_POST['resimduzenle'])) {
+
+
+    if($_FILES['resim'] ["size"]>0) {
+
+
+
+    $uploads_dir = '../resimler/galeri';
+    @$tmp_name = $_FILES['resim'] ["tmp_name"];
+    @$name = $_FILES['resim'] ["name"];
+
+    $sayi1=rand(20000,30000);
+    $sayi2=rand(20000,30000);
+    $sayi3=rand(20000,30000);
+    $sayilar=$sayi1.$sayi2.$sayi3;
+    $resimyolu=$sayilar.$name;
+    @move_uploaded_file($tmp_name, "$uploads_dir/$sayilar$name");
+    
+
+
+    $kaydet=$baglanti->prepare("UPDATE resimler SET
+    
+    baslik=:baslik,
+    sira=:sira,
+    resim=:resim
+    
+    WHERE id={$_POST['id']}
+    ");
+
+
+
+    $insert=$kaydet -> execute(array(
+
+        'baslik' =>$_POST['baslik'],
+        'sira' =>$_POST['sira'],
+        'resim' =>$resimyolu
+        
+        ));
+  
+
+if ($insert) {
+
+    $sil=$_POST['resim'];
+    unlink("../resimler/galeri/$sil");
+
+
+    Header("Location:../resimler.php?durum=okey");
+}else {
+    Header("Location:../resimler.php?durum=no");
+}
+
+} 
+    else {
+
+    $duzenle=$baglanti->prepare("UPDATE resimler SET
+    
+    baslik=:baslik,
+    sira=:sira
+    WHERE id={$_POST['id']}
+    ");
+
+
+
+    $insert=$duzenle -> execute(array(
+
+        'baslik' =>$_POST['baslik'],
+        'sira' =>$_POST['sira']
+        
+         ));
+
+
+if ($insert) {
+    Header("Location:../resimler.php?durum=okey");
+}else {
+    Header("Location:../resimler.php?durum=no");
+}
+
+}
+
+// resimler düzenle
+
+}
+
+//SİL
+
+if (isset($_POST['resimlersil'])) {
+
+    $sil=$_POST['resim'];
+    unlink("../resimler/galeri/$sil");
+
+
+    
+    $sil=$baglanti->prepare("DELETE from resimler where id=:id");
+    
+    $sil->execute(array(
+        'id'=>$_POST['id']
+    ));  
+if ($sil) {
+    Header("Location:../resimler.php?durum=ok");
+}
+else{
+    Header("Location:../resimler.php?durum=no");
+}
+
+}
+
+
+
+
+
+
 ?>

@@ -1,8 +1,22 @@
 <!-- Main Sidebar Container -->
 <aside style="background-color:black;"class="main-sidebar sidebar-dark-primary elevation-4">
+
+<?php  
+$ayarlar=$baglanti->prepare("SELECT * from ayarlar where ayar_id=?");
+
+$ayarlar->execute(array(0));  
+
+$ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
+
+
+
+?>
+
+
+
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="resimler/logo/<?php echo $ayarcek ['ayar_logo']?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Gym Legend</span>
     </a>
@@ -66,10 +80,10 @@
           </li>
 
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-            <i style="color:white;"class="fas fa-blog"></i>
+            <a href="resimler.php" class="nav-link">
+            <i class="fas fa-camera"></i>
               <p style="color:white;">
-                Bloğumuz
+                Resimler
                 <span class="right badge badge-primary">Yeni</span>
               </p>
             </a>
