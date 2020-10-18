@@ -42,7 +42,7 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
                         <ul>
                             <li class="active"><a href="./">Anasayfa</a></li>
                             <li><a href="./hakkimizda.php">Hakkımızda</a></li>
-                            <li><a href="./hizmetler.php">HİZMETLER</a></li>
+                            
                             <li><a href="./galeri.php">GALERİ</a></li>
                             <li><a href="./takimimiz.php">TAKIMIMIZ</a></li>
                             <li><a href="./iletisim.php">İLETİŞİM</a></li>

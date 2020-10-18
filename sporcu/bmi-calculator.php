@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
+
+
+<?php   
+require 'Panel/islem/baglanti.php';
+
+
+$ayarlar=$baglanti->prepare("SELECT * from ayarlar where ayar_id=?");
+
+$ayarlar->execute(array(0));  
+
+$ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
+
+
+
+?>
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gym | Template</title>
+    <title><?php echo $ayarcek['ayar_title']?></title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -172,22 +189,22 @@ Bu ideale yaklaştırılmış bir sonuçtur, elbette kişisel farklılıklar ola
                 <div class="col-md-4">
                     <div class="gt-text">
                         <i class="fa fa-map-marker"></i>
-                        <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
+                        <p><?php echo $ayarcek['ayar_adres']?></p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="gt-text">
                         <i class="fa fa-mobile"></i>
                         <ul>
-                            <li>125-711-811</li>
-                            <li>125-668-886</li>
+                            <li><?php echo $ayarcek['ayar_telefon']?></li>
+                            <li>-</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="gt-text email">
                         <i class="fa fa-envelope"></i>
-                        <p>Support.gymcenter@gmail.com</p>
+                        <p><?php echo $ayarcek['ayar_mail']?></p>
                     </div>
                 </div>
             </div>
