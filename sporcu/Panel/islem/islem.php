@@ -783,4 +783,22 @@ else{
 
 
 
+
+// ADMİN GİRİŞ--GUVENLİK
+
+if (isset($_POST['kullanicigiris'])) {
+    $ad= htmlspecialchars($_POST['ad']) ;        
+    $sifre= htmlspecialchars($_POST['sifre']);
+
+    
+}
+
+
+
+
+
+
+
+
+
 ?>
