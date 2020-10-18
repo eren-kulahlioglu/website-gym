@@ -597,6 +597,189 @@ else{
 
 
 
+// PT EKLE
+
+
+if(isset($_POST['ptkaydet'])) {
+  
+    
+    $uploads_dir = '../resimler/pt';
+    @$tmp_name = $_FILES['resim'] ["tmp_name"];
+    @$name = $_FILES['resim'] ["name"];
+
+    $sayi1=rand(20000,30000);
+    $sayi2=rand(20000,30000);
+    $sayi3=rand(20000,30000);
+    $sayilar=$sayi1.$sayi2.$sayi3;
+    $resimyolu=$sayilar.$name;
+    @move_uploaded_file($tmp_name, "$uploads_dir/$sayilar$name");
+    
+
+    
+
+    $kaydet=$baglanti->prepare("INSERT INTO trainer SET
+    
+    ad_soyad=:ad_soyad,
+    sira=:sira,
+    unvan=:unvan,
+    facebook=:facebook,
+    instagram=:instagram,
+    mail=:mail,
+    resim=:resim");
+
+     $insert=$kaydet -> execute(array(
+
+        'ad_soyad' =>$_POST['ad_soyad'],
+        'sira' =>$_POST['sira'],
+        'unvan' =>$_POST['unvan'],
+        'facebook' =>$_POST['facebook'],
+        'instagram' =>$_POST['instagram'],
+        'mail' =>$_POST['mail'],
+        'resim' =>$resimyolu
+        
+        ));
+  
+
+if ($insert) {
+    Header("Location:../takimimiz.php?durum=okey");
+}else {
+    Header("Location:../takimimiz.php?durum=no");
+}
+
+} 
+
+
+
+
+
+// PT Düzenle
+
+
+if(isset($_POST['ptduzenle'])) {
+
+
+    if($_FILES['resim'] ["size"]>0) {
+
+
+
+    $uploads_dir = '../resimler/pt';
+    @$tmp_name = $_FILES['resim'] ["tmp_name"];
+    @$name = $_FILES['resim'] ["name"];
+
+    $sayi1=rand(20000,30000);
+    $sayi2=rand(20000,30000);
+    $sayi3=rand(20000,30000);
+    $sayilar=$sayi1.$sayi2.$sayi3;
+    $resimyolu=$sayilar.$name;
+    @move_uploaded_file($tmp_name, "$uploads_dir/$sayilar$name");
+    
+
+
+    $kaydet=$baglanti->prepare("UPDATE trainer SET
+    
+    ad_soyad=:ad_soyad,
+    sira=:sira,
+    unvan=:unvan,
+    facebook=:facebook,
+    instagram=:instagram,
+    mail=:mail,
+    resim=:resim
+    
+    WHERE id={$_POST['id']}
+    ");
+
+
+
+    $insert=$kaydet -> execute(array(
+
+        'ad_soyad' =>$_POST['ad_soyad'],
+        'sira' =>$_POST['sira'],
+        'unvan' =>$_POST['unvan'],
+        'facebook' =>$_POST['facebook'],
+        'instagram' =>$_POST['instagram'],
+        'mail' =>$_POST['mail'],
+        'resim' =>$resimyolu
+        
+        ));
+  
+
+if ($insert) {
+
+    $sil=$_POST['resim'];
+    unlink("../resimler/pt/$sil");
+
+
+    Header("Location:../takimimiz.php?durum=okey");
+}else {
+    Header("Location:../takimimiz.php?durum=no");
+}
+
+} 
+    else {
+
+    $duzenle=$baglanti->prepare("UPDATE trainer SET
+    
+    ad_soyad=:ad_soyad,
+    sira=:sira,
+    unvan=:unvan,
+    facebook=:facebook,
+    instagram=:instagram,
+    mail=:mail
+    WHERE id={$_POST['id']}
+    ");
+
+
+
+    $insert=$duzenle -> execute(array(
+
+        'ad_soyad' =>$_POST['ad_soyad'],
+        'sira' =>$_POST['sira'],
+        'unvan' =>$_POST['unvan'],
+        'facebook' =>$_POST['facebook'],
+        'instagram' =>$_POST['instagram'],
+        'mail' =>$_POST['mail']
+
+        
+        
+         ));
+
+
+if ($insert) {
+    Header("Location:../takimimiz.php?durum=okey");
+}else {
+    Header("Location:../takimimiz.php?durum=no");
+}
+
+}
+
+// PT düzenle
+
+}
+
+//PT SİL
+
+if (isset($_POST['ptsil'])) {
+
+    $sil=$_POST['resim'];
+    unlink("../resimler/pt/$sil");
+
+
+    
+    $sil=$baglanti->prepare("DELETE from trainer where id=:id");
+    
+    $sil->execute(array(
+        'id'=>$_POST['id']
+    ));  
+if ($sil) {
+    Header("Location:../takimimiz.php?durum=ok");
+}
+else{
+    Header("Location:../takimimiz.php?durum=no");
+}
+
+}
+
+
 
 
 

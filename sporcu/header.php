@@ -44,21 +44,13 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
                             <li><a href="./hakkimizda.php">Hakkımızda</a></li>
                             <li><a href="./hizmetler.php">HİZMETLER</a></li>
                             <li><a href="./galeri.php">GALERİ</a></li>
-                            <li><a href="./team.html">TAKIMIMIZ</a></li>
+                            <li><a href="./takimimiz.php">TAKIMIMIZ</a></li>
                             <li><a href="./iletisim.php">İLETİŞİM</a></li>
-                           
-                        
-                            <li><a href="#">Diğer</a>
-                                <ul class="dropdown">
-                                    
-                                   
-                                    <li><a href="./bmi-calculator.html">Bmi Hesapla</a></li>
-                                    <li><a href="./blog.html">blog</a></li>
-                                    <li><a href="./404.html">404</a></li>
+                            <li><a href="./bmi-calculator.php">Bmi Hesapla</a></li>
+                                  
                                    
                                    
-                                </ul>
-                            </li>
+                               
                          
                         </ul>
                     </nav>

@@ -70,6 +70,17 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
 
 
           <li class="nav-item">
+            <a href="takimimiz.php" class="nav-link">
+            <i style="color:white;" class="fas fa-users"></i>
+              <p style="color:white;">
+                Takımımız
+                <span class="right badge badge-primary">Yeni</span>
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
             <a href="iletisimgelen.php" class="nav-link">
             <i class="far fa-envelope"></i>
               <p style="color:white;">

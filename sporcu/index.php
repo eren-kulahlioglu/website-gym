@@ -1,8 +1,44 @@
 
 
 
+    <!-- Offcanvas Menu Section Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="canvas-close">
+            <i class="fa fa-close"></i>
+        </div>
+        <div class="canvas-search search-switch">
+            <i class="fa fa-search"></i>
+        </div>
+        <nav class="canvas-menu mobile-menu">
+            <ul>
+                <li><a href="./index.php">Anasayfa</a></li>
+                <li><a href="./hakkimizda.php">Hakkımızda</a></li>
+                <li><a href="./class-details.html">Hizmetler</a></li>
+                <li><a href="./galeri.php">Galeri</a></li>
+                <li><a href="./takimimiz.php">Takımımız</a></li>
+                <li><a href="./bmi-calculator.html">Bmi</a></li>
+   
+                
+                 </li>
+                <li><a href="./iletisim.php">İletişim</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="canvas-social">
+            <a href="<?php echo $ayarcek['ayar_facebook']?>"><i class="fa fa-facebook"></i></a>
+  
+            <a href="<?php echo $ayarcek['ayar_instagram']?>"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu Section End -->
 
-<?php include 'menusection.php' ?>
+
+
+
+
+
+
 <?php include 'header.php' ?>
 <?php include 'hero.php' ?>
 
@@ -77,6 +113,12 @@ $hakkimizdacek = $hakkimizda-> fetch(PDO::FETCH_ASSOC);
 
 
 ?>
+
+
+
+
+
+
 
         <div class="container">
             <div class="row">
