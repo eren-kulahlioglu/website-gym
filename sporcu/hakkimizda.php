@@ -45,8 +45,8 @@
         <div class="loader"></div>
     </div>
 
- <!-- Offcanvas Menu Section Begin -->
-    <div class="offcanvas-menu-overlay"></div>
+<!-- Offcanvas Menu Section Begin -->
+<div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="canvas-close">
             <i class="fa fa-close"></i>
@@ -56,18 +56,24 @@
         </div>
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li class="active" ><a href="./about-us.html">About Us</a></li>
-                <li><a href="./classes.html">Classes</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./team.html">Our Team</a></li>
-                <li><a href="#">Pages</a>
-               
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./index.php">Anasayfa</a></li>
+                <li><a href="./hakkimizda.php">Hakkımızda</a></li>
+                
+                <li><a href="./galeri.php">Galeri</a></li>
+                <li><a href="./takimimiz.php">Takımımız</a></li>
+                <li><a href="./bmi-calculator.php">Bmi Hesapla</a></li>
+   
+                
+                 </li>
+                <li><a href="./iletisim.php">İletişim</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
-        
+        <div class="canvas-social">
+            <a href="<?php echo $ayarcek['ayar_facebook']?>"><i class="fa fa-facebook"></i></a>
+  
+            <a href="<?php echo $ayarcek['ayar_instagram']?>"><i class="fa fa-instagram"></i></a>
+        </div>
     </div>
     <!-- Offcanvas Menu Section End -->
 
@@ -186,51 +192,61 @@ $hakkimizdacek = $hakkimizda-> fetch(PDO::FETCH_ASSOC);
     <!-- About US Section End -->
 
     <!-- Team Section Begin -->
-    <section class="team-section spad">
+    <section class="team-section team-page spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="team-title">
                         <div class="section-title">
-                            <span>GYM LEGEND TAKIMI</span>
-                            <h2><?php echo $hakkimizdacek['pt_baslik'] ?></h2>
+                            <span>tAKIMIMIZ</span>
+                            <h2>DENEYİMLİ PT'LERİMİZ</h2>
                         </div>
                         
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="ts-slider owl-carousel">
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-1.jpg">
-                            <div class="ts_text">
-                                <h4><?php echo $hakkimizdacek['pt_name1'] ?></h4>
-                                <span>PT, MİLLİ SPORCU</span>
+
+
+
+            <?php  
+$trainer=$baglanti->prepare("SELECT * from trainer order by sira ASC");
+
+$trainer->execute();  
+
+while ($trainercek = $trainer-> fetch(PDO::FETCH_ASSOC)) {
+
+?>
+                <div class="col-lg-4 col-sm-6">
+
+
+
+
+
+                
+                    <div class="ts-item set-bg" data-setbg="Panel/resimler/pt/<?php echo $trainercek['resim']?>">
+                        <div class="ts_text">
+                            <h4><?php echo $trainercek['ad_soyad']   ?></h4>
+                            <span><?php echo $trainercek['unvan']   ?></span>
+                            <div class="tt_social">
+                                <a href="<?php echo $trainercek['facebook'] ?>"><i class="fa fa-facebook"></i></a>
+                                
+                                
+                                <a href="<?php echo $trainercek['instagram'] ?>"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-2.jpg">
-                            <div class="ts_text">
-                                <h4><?php echo $hakkimizdacek['pt_name2'] ?></h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-3.jpg">
-                            <div class="ts_text">
-                                <h4><?php echo $hakkimizdacek['pt_name3'] ?></h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    
-                    
-                    
                 </div>
+
+     
+<?php   }  ?>
+                
+                
             </div>
         </div>
     </section>
+    <!-- Team Section End -->
     <!-- Team Section End -->
 
     <!-- Banner Section Begin -->
