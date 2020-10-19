@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>GYM LEGEND GİRİŞ</title>
+  <title>GYM LEGEND ADMİN GİRİŞ</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,9 +28,25 @@
     <div  class="card-body login-card-body">
       <p class="login-box-msg">Giriş</p>
 
+    <?php  if($_GET['durum']=="cikis"){ 
+      ?> <h4 style="color:green;"> Başarılı Çıkış Yaptınız İyi Günler </h4>   
+    <?php }  ?>
+
+
+    <?php  if($_GET['durum']==")izinsiz"){ 
+      ?> <h4 style="color:green;"> Lütfen Bilgileri Giriniz </h4>   
+    <?php }  ?>
+
+
+    <?php  if($_GET['durum']=="no"){ 
+      ?> <h4 style="color:red;"> Hatalı Bilgi </h4>   
+    <?php }  ?>
+
+
+
       <form action="islem/islem.php" method="post">
         <div class="input-group mb-3">
-          <input name="ad" minlength="10" maxlength="20" type="email" class="form-control" placeholder="Email" required="">
+          <input name="ad" minlength="5" maxlength="40" type="text" class="form-control" placeholder="Kullanıcı Adı" required="">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -72,5 +88,11 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 
+
+
+
 </body>
+
+
+<p class="login-box-msg">Giriş işlemi sorunlarınız için '05458190306' destek hattından iletişime geçiniz.</p>
 </html>

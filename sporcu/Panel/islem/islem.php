@@ -4,6 +4,8 @@
 
 require 'baglanti.php';
 
+session_start();
+
 
 
 if(isset($_POST['gonder'])) {
@@ -790,8 +792,79 @@ if (isset($_POST['kullanicigiris'])) {
     $ad= htmlspecialchars($_POST['ad']) ;        
     $sifre= htmlspecialchars($_POST['sifre']);
 
-    
+
+    if ($ad && $sifre) {
+        $kullanicisor=$baglanti->prepare("SELECT * FROM kullanici where kadi=:ad and sifre=:sifre");
+        $kullanicisor->execute(array(
+         'ad' => $ad,
+         'sifre' => $sifre
+        ));
+        $say=$kullanicisor->rowCount();
+        if ($say > 0) {
+         $_SESSION['ad']=$ad;
+         header('Location:../index.php');
+        } else {
+         header('Location:../login.php?durum=no');
+        }
+
+
+
+
+    }
 }
+
+
+// GİRİŞ KULLANICI KAYDET
+
+
+if(isset($_POST['kullanicikaydet'])) {
+        
+
+    $kaydet=$baglanti->prepare("INSERT INTO kullanici SET
+    
+    adsoyad=:adsoyad,
+    kadi=:kadi,
+    yetki=:yetki,
+    sifre=:sifre
+    ");
+
+    $insert=$kaydet -> execute(array(
+
+        'adsoyad' =>$_POST['adsoyad'],
+        'kadi' =>$_POST['kadi'],
+        'yetki' =>$_POST['yetki'],
+        'sifre' =>$_POST['sifre']
+      ));
+  
+
+if ($insert) {
+    Header("Location:../kullanici.php?durum=okey");
+}else {
+    Header("Location:../kullanici.php?durum=no");
+}
+
+} 
+
+// KULLANICI SİL
+
+//SİL
+
+if (isset($_POST['kullanicisil'])) {
+
+    $sil=$baglanti->prepare("DELETE from kullanici where id=:id");
+    
+    $sil->execute(array(
+        'id'=>$_POST['id']
+    ));  
+if ($sil) {
+    Header("Location:../kullanici.php?durum=ok");
+}
+else{
+    Header("Location:../kullanici.php?durum=no");
+}
+
+}
+
 
 
 

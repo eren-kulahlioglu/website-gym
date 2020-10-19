@@ -24,12 +24,12 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div style="background-color:#FFB713;"class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/adm.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Meriç Çonka</a>
+          <a style="color:black;"href="#" class="d-block">Meriç Çonka</a>
         </div>
       </div>
 
@@ -116,6 +116,14 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
                   <p>Site Ayarları</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="kullanici.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kullanıcılar</p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="iletisim.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -133,7 +141,7 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
           
           
             <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="cikis.php" class="nav-link">
             <i class="fas fa-sign-out-alt"></i>
               <p>
                 Çıkış Yap

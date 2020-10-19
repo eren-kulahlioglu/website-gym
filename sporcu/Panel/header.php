@@ -5,8 +5,19 @@ error_reporting(0);
 
 
 
-
+session_start();
 require 'islem/baglanti.php';
+
+$kullanicisor=$baglanti->prepare("SELECT * from kullanici where kadi=:ad ");
+$kullanicisor->execute(array(
+  'ad'=>$_SESSION['ad']
+));
+$say=$kullanicisor->rowCount();
+
+if($say==0){
+  header('Location:login.php?durum=)izinsiz');
+  die;
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,11 +80,7 @@ require 'islem/baglanti.php';
       
       <!-- Notifications Dropdown Menu -->
       
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
+
     </ul>
   </nav>
   <!-- /.navbar -->
