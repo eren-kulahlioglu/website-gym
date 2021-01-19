@@ -818,7 +818,24 @@ if (isset($_POST['kullanicigiris'])) {
 
 
 if(isset($_POST['kullanicikaydet'])) {
-        
+    
+    
+$kullanici=$baglanti->prepare("SELECT * from kullanici where kadi=:kadi");
+
+$kullanici->execute(array(
+    'kadi'=>$_POST['kadi']
+));  
+
+$say=$kullanici->rowCount();
+
+if($say>0) {
+    Header("Location:../kullanici.php?durum=kullanicivar");
+    exit;
+}
+
+
+
+
 
     $kaydet=$baglanti->prepare("INSERT INTO kullanici SET
     

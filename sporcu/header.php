@@ -1,4 +1,5 @@
 <?php   
+error_reporting(0);
 require 'Panel/islem/baglanti.php';
 
 
@@ -41,12 +42,12 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
                     <nav class="nav-menu">
                         <ul>
                             <li class="active"><a href="./">Anasayfa</a></li>
-                            <li><a href="./hakkimizda.php">Hakkımızda</a></li>
+                            <li><a href="./hakkimizda">Hakkımızda</a></li>
                             
-                            <li><a href="./galeri.php">GALERİ</a></li>
-                            <li><a href="./takimimiz.php">TAKIMIMIZ</a></li>
-                            <li><a href="./iletisim.php">İLETİŞİM</a></li>
-                            <li><a href="./bmi-calculator.php">Bmi Hesapla</a></li>
+                            <li><a href="./galeri">GALERİ</a></li>
+                            <li><a href="./takimimiz">TAKIMIMIZ</a></li>
+                            <li><a href="./iletisim">İLETİŞİM</a></li>
+                            <li><a href="./bmi-calculator">Bmi Hesapla</a></li>
                                   
                                    
                                    
@@ -62,8 +63,8 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
                         </div>
                         <div class="to-social">
                             <a href="<?php echo $ayarcek['ayar_facebook']?>"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a> 
+                        
+                           
                             <a href="<?php echo $ayarcek['ayar_instagram']?>"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>

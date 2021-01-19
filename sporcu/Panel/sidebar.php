@@ -38,7 +38,7 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           
         <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="index.php" class="nav-link">
             <i style="color:white;"class="fas fa-home"></i>
               <p style="color:white;">
                 Anasayfa
@@ -84,7 +84,7 @@ $ayarcek = $ayarlar-> fetch(PDO::FETCH_ASSOC);
             <a href="iletisimgelen.php" class="nav-link">
             <i class="far fa-envelope"></i>
               <p style="color:white;">
-                İletişim
+                Mesajlar (İletişim)
                 <span class="right badge badge-primary">Yeni</span>
               </p>
             </a>

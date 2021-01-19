@@ -10,6 +10,28 @@
         </section>
 
 
+
+        <?php    
+            
+            if ($_GET["durum"]=="okey"){ ?>
+              <h4 style="color:green; margin-left:20px"> İşlem Başarılı. </h4>
+              <?php
+            }
+            elseif ($_GET["durum"]=="no") {   ?>
+              <h4 style="color:red; margin-left:20px"> İşlem Başarısız. </h4>
+              <?php
+              
+            }
+            
+            elseif ($_GET["durum"]=="kullanicivar") {   ?>
+              <h4 style="color:red; margin-left:20px"> Kullanıcı Zaten Kayıtlı. </h4>
+              <?php
+              
+            }
+            
+            ?>
+
+
         <!-- /.row -->
         <div class="row">
           <div class="col-12">

@@ -1,8 +1,8 @@
 
 
 
-    <!-- Offcanvas Menu Section Begin -->
-    <div class="offcanvas-menu-overlay"></div>
+   <!-- Offcanvas Menu Section Begin -->
+   <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="canvas-close">
             <i class="fa fa-close"></i>
@@ -12,22 +12,21 @@
         </div>
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="./index.php">Anasayfa</a></li>
-                <li><a href="./hakkimizda.php">Hakkımızda</a></li>
-                <li><a href="./class-details.html">Hizmetler</a></li>
-                <li><a href="./galeri.php">Galeri</a></li>
-                <li><a href="./takimimiz.php">Takımımız</a></li>
-                <li><a href="./bmi-calculator.html">Bmi</a></li>
-   
+                <li><a href="index">Anasayfa</a></li>
+                <li><a href="hakkimizda">Hakkımızda</a></li>
+                <li><a href="galeri">Galeri</a></li>
+                <li><a href="takimimiz">Takımımız</a></li>
+                <li><a href="iletisim">İletişim</a></li>
+                <li><a href="bmi-calculator">Bmi calculate</a></li>
+                      >
+            
+                </li>
                 
-                 </li>
-                <li><a href="./iletisim.php">İletişim</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
             <a href="<?php echo $ayarcek['ayar_facebook']?>"><i class="fa fa-facebook"></i></a>
-  
             <a href="<?php echo $ayarcek['ayar_instagram']?>"><i class="fa fa-instagram"></i></a>
         </div>
     </div>
@@ -166,7 +165,7 @@ $hakkimizdacek = $hakkimizda-> fetch(PDO::FETCH_ASSOC);
    
 
     <!-- Banner Section Begin -->
-    <section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
+    <section class="banner-section set-bg" data-setbg="img/px2.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
